@@ -697,13 +697,13 @@ inline int end_game(const board *b){
 int nega_alpha(const board *b, bool skipped, int depth, int alpha, int beta);
 
 inline bool mpc_higher(const board *b, bool skipped, int depth, int beta){
-    return false;
+    //return false;
     int bound = beta + mpctsd[(b->n - 4) / 10][depth];
     return nega_alpha(b, skipped, mpcd[depth], bound - epsilon, bound) >= bound;
 }
 
 inline bool mpc_lower(const board *b, bool skipped, int depth, int alpha){
-    return false;
+    //return false;
     int bound = alpha - mpctsd[(b->n - 4) / 10][depth];
     return nega_alpha(b, skipped, mpcd[depth], bound, bound + epsilon) <= bound;
 }
