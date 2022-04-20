@@ -29,32 +29,15 @@
         </p>
         <p align="center">
             <span class="setting">AIの弱さ</span>
-            <input type="range" id="ai_level" min="0" max="14" step="1" value="2">
+            <input type="range" id="ai_level" min="0" max="14" step="1" value="5">
             <span class="setting" id="ai_level_label"></span>
         </p>
-        <div align="center" id="custom" class="custom">
-            <p>
-                <span>book使用手数</span>
-                <input type="range" id="book" min="0" max="30" step="5" value="55">
-                <span class="setting" id="book_label"></span>
-            </p>
-            <p>
-                <span>中盤読み手数</span>
-                <input type="range" id="read" min="1" max="15" step="1" value="3">
-                <span class="setting" id="read_label"></span>
-            </p>
-            <p>
-                <span>完全読みマス数</span>
-                <input type="range" id="win_read" min="1" max="18" step="1" value="16">
-                <span class="setting" id="win_read_label"></span>
-            </p>
-        </div>
         <p align="center">
             <input type="checkbox" id="show_value" checked><label class="setting" for="show_value">ヒント表示</label>
             <input type="checkbox" id="show_graph" checked><label class="setting" for="show_graph">対局中グラフ表示</label>
         </p>
         <div align="center" id="div_start">
-            <input type="submit" class="setting" value="対局開始" onclick="start()" id="start" disabled>
+            <input type="submit" class="setting" value="AI読み込み中" onclick="start()" id="start" disabled>
         </div>
         <div class="popup" id="js-popup">
             <div class="popup-inner">
@@ -108,101 +91,90 @@
             <details class="details" id="strength">
                 <summary class="summary">AIの強さ</summary>
                 <div class="text">
-                    AIの強さは序中盤のbook使用手数と先読み手数、終盤の完全読み手数で調整されます。
+                    AIの強さは序中盤のbook使用手数と先読み手数、終盤の読み切り手数で調整されます。
                     レベルが上がると計算時間が増えるので、様子を見つつ設定してください。<br>
-                    カスタムレベルでは自分でパラメータを設定できます。<br>
                     各強さの詳細は以下です。
                 </div>
                 <table>
                     <tr>
                         <td class="text">レベル</td>
-                        <td class="text">book</td>
                         <td class="text">読み</td>
                         <td class="text">完全読み</td>
                     </tr>
                     <tr>
                         <td class="text">1</td>
-                        <td class="text">5手</td>
+                        <td class="text">1手</td>
                         <td class="text">2手</td>
-                        <td class="text">5手</td>
                     </tr>
                     <tr>
                         <td class="text">2</td>
-                        <td class="text">10手</td>
+                        <td class="text">2手</td>
+                        <td class="text">4手</td>
+                    </tr>
+                    <tr>
+                        <td class="text">3</td>
                         <td class="text">3手</td>
                         <td class="text">6手</td>
                     </tr>
                     <tr>
-                        <td class="text">3</td>
-                        <td class="text">20手</td>
-                        <td class="text">4手</td>
-                        <td class="text">7手</td>
-                    </tr>
-                    <tr>
                         <td class="text">4</td>
-                        <td class="text">25手</td>
-                        <td class="text">5手</td>
+                        <td class="text">4手</td>
                         <td class="text">8手</td>
                     </tr>
                     <tr>
                         <td class="text">5</td>
-                        <td class="text">30手</td>
-                        <td class="text">6手</td>
-                        <td class="text">9手</td>
+                        <td class="text">5手</td>
+                        <td class="text">10手</td>
                     </tr>
                     <tr>
                         <td class="text">6</td>
-                        <td class="text">30手</td>
-                        <td class="text">7手</td>
-                        <td class="text">10手</td>
+                        <td class="text">6手</td>
+                        <td class="text">12手</td>
                     </tr>
                     <tr>
                         <td class="text">7</td>
-                        <td class="text">30手</td>
-                        <td class="text">8手</td>
-                        <td class="text">11手</td>
+                        <td class="text">7手</td>
+                        <td class="text">14手</td>
                     </tr>
                     <tr>
                         <td class="text">8</td>
-                        <td class="text">30手</td>
-                        <td class="text">9手</td>
-                        <td class="text">12手</td>
-                    </tr>
-                    <tr>
-                        <td class="text">9</td>
-                        <td class="text">30手</td>
-                        <td class="text">10手</td>
-                        <td class="text">13手</td>
-                    </tr>
-                    <tr>
-                        <td class="text">10</td>
-                        <td class="text">30手</td>
-                        <td class="text">11手</td>
-                        <td class="text">14手</td>
-                    </tr>
-                    <tr>
-                        <td class="text">11</td>
-                        <td class="text">30手</td>
-                        <td class="text">12手</td>
-                        <td class="text">15手</td>
-                    </tr>
-                    <tr>
-                        <td class="text">12</td>
-                        <td class="text">30手</td>
-                        <td class="text">13手</td>
+                        <td class="text">8手</td>
                         <td class="text">16手</td>
                     </tr>
                     <tr>
+                        <td class="text">9</td>
+                        <td class="text">9手</td>
+                        <td class="text">18手</td>
+                    </tr>
+                    <tr>
+                        <td class="text">10</td>
+                        <td class="text">10手</td>
+                        <td class="text">18手</td>
+                    </tr>
+                    <tr>
+                        <td class="text">11</td>
+                        <td class="text">11手</td>
+                        <td class="text">20手</td>
+                    </tr>
+                    <tr>
+                        <td class="text">12</td>
+                        <td class="text">12手</td>
+                        <td class="text">20手</td>
+                    </tr>
+                    <tr>
                         <td class="text">13</td>
-                        <td class="text">30手</td>
-                        <td class="text">14手</td>
-                        <td class="text">17手</td>
+                        <td class="text">13手</td>
+                        <td class="text">20手</td>
                     </tr>
                     <tr>
                         <td class="text">14</td>
-                        <td class="text">30手</td>
+                        <td class="text">14手</td>
+                        <td class="text">20手</td>
+                    </tr>
+                    <tr>
+                        <td class="text">15</td>
                         <td class="text">15手</td>
-                        <td class="text">18手</td>
+                        <td class="text">22手</td>
                     </tr>
                 </table>
             </details>
@@ -219,6 +191,10 @@
                     <summary class="summary_small">Egaroucen</summary>
                     <div class="text">
                         このAIは世界1位になった自作の強いオセロAI"Egaroucid4"のアルゴリズムを数行書き換え、自己対戦をして評価関数を新たに作ることで制作しました。制作時間は3時間です。
+                    </div>
+                    <summary class="summary_small">Egaroucen2</summary>
+                    <div class="text">
+                        強いオセロAIであるEgaroucid4の後継、Egaroucid5のコードを流用して再構成した負けオセロAIです。前作よりも弱くなり、自分調べで世界最弱です。
                     </div>
                 </details>
             </div>
@@ -246,6 +222,14 @@
                         <td class="logs">[仕様変更]<br>
                             <ul>
                                 <li>AIを高速化してレベルを増やした</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="logs">2022/04/20 12:40</td>
+                        <td class="logs">[仕様変更]<br>
+                            <ul>
+                                <li>AIをEgaroucen2に変更</li>
                             </ul>
                         </td>
                     </tr>
