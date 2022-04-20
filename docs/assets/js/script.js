@@ -133,11 +133,14 @@ function start() {
     _init_ai(ai_player, level_idx + 1);
     console.log("sent params to AI")
     n_stones = 4;
+    show(-1, -1);
+    /*
     if (ai_player == 0){
         move(4, 5);
     } else {
         show(-1, -1);
     }
+    */
     setInterval(ai_check, 250);
 }
 
