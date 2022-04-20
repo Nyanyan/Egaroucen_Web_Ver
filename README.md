@@ -2,6 +2,8 @@
 
 これは自称世界最弱のオセロAI”Egaroucen”のWeb公開用レポジトリです。
 
+サイトはこちら: https://www.egaroucen.nyanyan.dev/
+
 AIのレポジトリは以下です。
 
 https://github.com/Nyanyan/Egaroucen
